@@ -1,0 +1,36 @@
+---
+- hosts: all
+  vars_files:
+    - private/secrets.yml
+  tasks:
+    - name: install Lua
+      apt: name=lua5.1 update_cache=yes cache_valid_time=86400
+    - name: install asterisk
+      apt: name=asterisk
+    - name: get rid of extensions files
+      file: path=/etc/asterisk/{{item}} state=absent
+      with_items:
+        - extensions.lua
+        - extensions.conf
+        - extensions.ael
+        - modules.conf
+        - sip.conf
+    - name: copy files
+      copy: src={{ item }} dest=/etc/asterisk/{{ item }} owner=asterisk group=asterisk
+      with_items:
+        - sip.conf
+        - modules.conf
+    - name: link up extensions.lua
+      file: src=/vagrant/extensions.lua dest=/etc/asterisk/extensions.lua state=link owner=asterisk group=asterisk
+    - name: config pwd 1
+      ini_file: dest=/etc/asterisk/sip.conf section=ht503fxo option=secret value={{ht503fxo_pwd}}
+    - name: config pwd 2
+      ini_file: dest=/etc/asterisk/sip.conf section=ht503fxs option=secret value={{ht503fxs_pwd}}
+    - name: copy sounds
+      copy: src={{item}} dest=/usr/share/asterisk/sounds/custom/{{item}} owner=asterisk group=asterisk
+      with_items:
+        - ContinuePleasePress.wav
+        - NotRecognized.wav
+        - MainGreeting.wav
+    - name: restart asterisk
+      service: name=asterisk state=restarted
