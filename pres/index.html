@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+  <head>
+    <title>Stopping Robocallers with Asterisk</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="js/libs/reveal.js/css/reveal.css">
+		<link rel="stylesheet" href="js/libs/reveal.js/css/theme/black.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="js/libs/reveal.js/lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'js/libs/reveal.js/css/print/pdf.css' : 'js/libs/reveal.js/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section data-markdown="slides.md" data-separator="^\n-- " data-notes-separator="^\nNote:.*$">
+        </section>
+      </div>
+    </div>
+         
+  <script src="js/libs/reveal.js/lib/js/head.min.js"></script>
+	<script src="js/libs/reveal.js/js/reveal.js"></script>
+
+  <script>
+    Reveal.initialize({
+      controls: true,
+      progress: true,
+      history: true,
+      center: true,
+      // Optional libraries used to extend on reveal.js
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'js/libs/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'js/libs/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'js/libs/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'js/libs/reveal.js/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'js/libs/reveal.js/plugin/zoom-js/zoom.js', async: true },
+					{ src: 'js/libs/reveal.js/plugin/notes/notes.js', async: true }
+				]
+      });
+  </script>
+  </body>
+</html>
