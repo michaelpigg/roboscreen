@@ -1,4 +1,7 @@
+# What's Going on Here?
 Roboscreen is an Asterisk-based system to screen out unwanted robocallers. It does this by asking callers whose caller ID is not known good to prove that they are human by pressing a randomly chosen key.
+
+[Overview](http://michaelpigg.github.io/roboscreen/pres)
 
 ## Hardware
 The current version was developed with the BeagleBone Black and Grandstream HT503 ATA. It should operate with any equivalent hardware, however.
